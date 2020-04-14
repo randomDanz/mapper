@@ -1,8 +1,16 @@
 from flask import Flask, request
 from flask import jsonify
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 
 app = Flask(__name__)
+
+CORS(app)
+cors = CORS(app, resources = {
+    r"/*" : {
+        "origins":"*"
+    }
+})
 
 ENV = 'prod'
 
