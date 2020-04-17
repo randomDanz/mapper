@@ -12,6 +12,9 @@ psycopg2 = "*"
 flask-sqlalchemy = "*"
 gunicorn = "*"
 flask-cors = "*"
+requests = "*"
+numpy = "*"
+matplotlib = "*"
 
 [requires]
 python_version = "3.8"

@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title>Mapper</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script type="javascript">
+          function allnumeric(inputtxt)
+          {
+              var numbers = /^[0-9]+$/;
+              if(inputtxt.value.match(numbers))
+              {
+              alert('Your Registration number has accepted....');
+              document.form1.text1.focus();
+              return true;
+              }
+              else
+              {
+              alert('Please input numeric characters only');
+              document.form1.text1.focus();
+              return false;
+              }
+          } 
+        </script>
+      </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <span class="navbar-brand" href="#">Mapper</span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Latest</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Show All</a>
+                </li>
+              </ul> -->
+              <div style="margin-left: auto;">
+                <form class="form-inline my-2 my-lg-0 " method="post" action = "search">
+                  <input class="form-control mr-sm-2" type="text" placeholder="Number of map" aria-label="Search" name="search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="allnumeric(document.form1.text1)">Search</button>
+                </form>
+              </div>
+            <!-- </div> -->
+          </nav>
+          <div>
+              <div>
+                {% if x == 1 %}
+                  <div class="alert alert-danger" role="alert">
+                    Please Enter a <strong>number!</strong>
+                  </div>
+                {% else %}
+                <img src="{{ image }}"/>
+                {% endif %}
+              </div>
+          </div>
+    </body>
+</html>
