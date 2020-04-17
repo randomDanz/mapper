@@ -133,7 +133,7 @@ def search():
         data = re.search(r'[0-9]+',request.form['search'])
         if data != None:
             x = 0
-            url = 'http://127.0.0.1:5000/api/getData'
+            url = 'https://mapper-api.herokuapp.com/api/getData'
             x = requests.get(url,data=request.form['search'])
             print(x.text)
             image = createMap(json.loads(x.text))
