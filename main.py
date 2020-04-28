@@ -16,7 +16,7 @@ from matplotlib.figure import Figure
 
 app = Flask(__name__)
 
-# CORS(app)
+# CORS(app)                               use this for cross site access
 # cors = CORS(app, resources = {
 #     r"/*" : {
 #         "origins":"*"
@@ -105,13 +105,13 @@ def createMap(data):
         dist.append(rho)
     plt.polar(angle,dist)#Figure1
     #Figure2
-    fig = plt.figure()
+    fig = plt.figure(frameon=False)
     ax = fig.add_subplot(111, polar=True)
     c = ax.plot(angle, dist, color='r', linewidth=3)
     ax.set_thetamin(0)
     ax.set_thetamax(180)
     ax.set_theta_offset(2*np.pi)
-
+    ax.axis('off')
     # Display the Polar plot
     # plt.show()
 
@@ -134,10 +134,11 @@ def search():
         if data != None:
             x = 0
             url = 'https://mapper-api.herokuapp.com/api/getData'
+            # url = 'http://127.0.0.1:5000/api/getData'
             x = requests.get(url,data=request.form['search'])
             print(x.text)
             image = createMap(json.loads(x.text))
-            return render_template('index.html',  x=x , image = image)
+            return render_template('index.html',  x = 0, data=json.loads(x.text) , image = image)
         return render_template('index.html', x = x)
 
 
